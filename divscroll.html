@@ -1,0 +1,40 @@
+<fb:js-string var="dialog_fbml">  
+    <div id="dialog_content">  
+        <div class="dialog_loading">Loading...</div>  
+    </div>  
+</fb:js-string>  
+
+<script>
+function showDialog(url, title, ok, cancel) {  
+    // Set the default pop-up dialog values for those not supplied.  
+    if (title === undefined) { title = "Dialog"; }  
+    if (ok === undefined) { ok = "Okay"; }  
+    if (cancel === undefined) { cancel = "Cancel"; }  
+  
+    // Build the AJAX object to request the dialog contents.  
+    var ajax = new Ajax();  
+    ajax.responseType = Ajax.FBML;  
+    ajax.requireLogin = true;  
+    ajax.ondone = function(data) {  
+        // Fill the Dialog's DIV element with the FBML returned by the AJAX request.  
+        // This will overwrite the loading message FBML currently nested in the DIV.  
+        document.getElementById('dialog_content').setInnerFBML(data); 
+    }; 
+ 
+    // Create a "loading" dialog box that will be updated via the AJAX request. 
+    dialog = new Dialog().showChoice(title, dialog_fbml, ok, cancel); 
+    dialog.onconfirm = function() { 
+        // Submit the Dialog's form if it exists, then hide the dialog.  
+        frm = document.getElementById('dialog_form');  
+        if (frm) { frm.submit(); }  
+        dialog.hide();  
+    };  
+    // Update the dialog contents via Mock AJAX request.  
+    ajax.post(url);  
+}  
+
+url='http://prayers.hilel.org/prayers_time/prayers_vars_ajax.php';
+showDialog(url,'dialo','ok','canc');
+
+</script>
+

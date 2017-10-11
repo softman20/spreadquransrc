@@ -1,0 +1,107 @@
+
+<script>
+function mouseaction(evt) {
+  eventFiredBy_ObjectId = evt.target.getId();
+  if (eventFiredBy_ObjectId == 'button1') targetId = document.getElementById('button1div');
+
+    Animation(targetId).to('height', 'auto').from('0px').to('width', '150px').from('0px').to('opacity', 1).from(0).show().go();
+    targetId.setStyle({overflow: 'auto'});
+}
+
+//add event listener to divs (mouseover & mouseout)
+document.getElementById('button1').addEventListener('click',mouseaction);
+
+</script>
+
+<style type="text/css">
+.clearfix :after {
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.maintabs {
+    margin: 0;
+    padding: 0 0 4px 0;
+    border-bottom: solid 1px #d8dfea;
+}
+
+.maintabs li {
+    float: left;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.maintabs a {
+    text-decoration: none;
+    font-weight: bold;
+    background: #D8DFEA;
+    color: #3B5998;
+    padding: 4px 6px;
+    margin: 0 3px;
+}
+
+
+.maintabs a.selected, .maintabs a.selected:hover {
+    background: white;
+    color: black;
+    border: solid 1px #d8dfea;
+    border-bottom-color: white;
+}
+
+.maintabs a:hover {
+    background: #3b5998;
+    color: white;
+}
+
+.popup {
+    text-align: left; 
+    width: 150px; 
+    padding: 10px;
+    background-color: #eee;
+    border: solid 1px #3b5998;
+}
+
+.popup ul {
+    padding: 0;
+    margin: 0;
+}
+
+.popup li {
+    float: none;
+    padding: 3px 0;
+}
+
+.popup a {
+    background: transparent;
+    padding: 0;
+}
+.popup a:hover {
+    background: transparent;
+    text-decoration: underline;
+    color: red;
+}
+
+</style>
+
+
+
+<ul class="maintabs clearfix">
+<li>
+    <a id='button1' href='#'>First Button</a>
+    <div id='button1div' class='popup clearfix' style='position:absolute; top:100px; left:65px; height: 180px; display:none; overflow: auto;'>
+        <ul>
+            <li><a href="#" onclick="Animation(document.getElementById('button1div')).to('height', '0px').to('opacity', 0).hide().go(); return false;">Close this window</a>
+            <li><a href='#'>Option A</a></li>
+            <li><a href='#'>Option B</a></li>
+            <li><a href='#'>Option C</a></li>
+        </ul>
+    </div>
+</li>
+
+
+</ul>
+
+<div style="height:100px;padding-top:100px;></div>
