@@ -1,9 +1,9 @@
 <?php
 //set_time_limit(0);
-include_once ('FBToolbox.class.php');
-$fbToolboxObj = new FBToolbox($apiKey, $secretKey);
-$fbuser = $fbToolboxObj->getUserID();
-$bookmarked = $fbToolboxObj->getBookmarked();
+//include_once ('FBToolbox.class.php');
+//$fbToolboxObj = new FBToolbox($apiKey, $secretKey);
+//$fbuser = $fbToolboxObj->getUserID();
+//$bookmarked = $fbToolboxObj->getBookmarked();
 //echo "<pre>".print_r($bookmarked)."</pre>";
 
 
